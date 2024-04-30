@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Seletiva {
@@ -23,9 +24,15 @@ public class Seletiva {
 
 
       selecionarCandidatos(candidatosList, SALARIO_BASE);                              
+      
 
-                         
-
+      List<Candidato> listaSelecionados = new ArrayList<Candidato>();
+      for(Candidato Candidato:candidatosList){
+        if(Candidato.selecionado){
+            listaSelecionados.add(Candidato);
+        }
+      }                              
+      contatarSelecionados(listaSelecionados);
     }
 
     public static void selecionarCandidatos(List<Candidato> Candidatos, double salarioBase){
@@ -35,6 +42,7 @@ public class Seletiva {
 
         for(Candidato Candidato:Candidatos){
             if( Candidato.getSalarioPretendido() < salarioBase){
+                Candidato.setSelecionado(true);
                 System.out.println("Ligar para "+Candidato.getNome());
                 listaSelecionados.add(Candidato);
                 candidatosSelecionados++;
@@ -51,6 +59,8 @@ public class Seletiva {
             }
         }
 
+       
+
       }    
       
       public static void imprimirNomeSelecionados(List<Candidato>listaSelecionados){
@@ -59,4 +69,26 @@ public class Seletiva {
             System.out.println(Candidato.getNome());
         }
       }
+      public static void contatarSelecionados(List<Candidato> listaSelecionados) {
+        for (Candidato candidato : listaSelecionados) {
+            int tentativas = 0;
+            boolean tentativaBemSucedida = false;
+    
+            do {
+                int randomNum = ThreadLocalRandom.current().nextInt(1, 3);
+                tentativas++;
+                if (randomNum % 2 == 0) {
+                    tentativaBemSucedida = true;
+                    System.out.println("Conseguimos contatar " + candidato.getNome() + " depois de " + tentativas + " tentativa(s)");
+                    continue;
+                }
+            } while (tentativas < 3 && !tentativaBemSucedida);
+    
+           
+            if (!tentativaBemSucedida) {
+                System.out.println("Não conseguimos contato com " + candidato.getNome() + ".");
+            }
+        }
+    }
+
 }
