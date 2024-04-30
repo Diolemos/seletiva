@@ -1,5 +1,9 @@
 import java.util.concurrent.ThreadLocalRandom;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
+
 
 public class Candidato {
     private String nome;
@@ -9,7 +13,7 @@ public class Candidato {
     public Candidato(String nome) {
         this.nome = nome;
         double randomDouble = ThreadLocalRandom.current().nextDouble(1800, 2200);
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.US));
         String salarioFormatado = df.format(randomDouble);
         this.salarioPretendido = Double.parseDouble(salarioFormatado);
 

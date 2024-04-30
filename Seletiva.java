@@ -21,11 +21,14 @@ public class Seletiva {
                                         candidatosList.add(candidato);
                                     }
 
+
+      selecionarCandidatos(candidatosList, SALARIO_BASE);                              
+
                          
 
     }
 
-    public static void selecionarCandidatos(ArrayList<Candidato> Candidatos, double salarioBase){
+    public static void selecionarCandidatos(List<Candidato> Candidatos, double salarioBase){
 
         for(Candidato Candidato:Candidatos){
             if( Candidato.getSalarioPretendido() < salarioBase){
