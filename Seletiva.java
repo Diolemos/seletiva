@@ -29,10 +29,19 @@ public class Seletiva {
     }
 
     public static void selecionarCandidatos(List<Candidato> Candidatos, double salarioBase){
+        int candidatosSelecionados = 0;
+        List<Candidato> listaSelecionados = new ArrayList<>();
+        
 
         for(Candidato Candidato:Candidatos){
             if( Candidato.getSalarioPretendido() < salarioBase){
                 System.out.println("Ligar para "+Candidato.getNome());
+                listaSelecionados.add(Candidato);
+                candidatosSelecionados++;
+                if(candidatosSelecionados == 5){
+                    
+                    break;}
+
             }
             else if(Candidato.getSalarioPretendido()==salarioBase){
                 System.out.println("Ligar para "+ Candidato.getNome() +" com contra proposta");
