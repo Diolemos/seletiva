@@ -39,7 +39,7 @@ public class Seletiva {
                 listaSelecionados.add(Candidato);
                 candidatosSelecionados++;
                 if(candidatosSelecionados == 5){
-                    
+                    imprimirNomeSelecionados(listaSelecionados);
                     break;}
 
             }
@@ -51,5 +51,12 @@ public class Seletiva {
             }
         }
 
-      }      
+      }    
+      
+      public static void imprimirNomeSelecionados(List<Candidato>listaSelecionados){
+        System.out.println("\n Os Candidatos selecionados São: \n");
+        for(Candidato Candidato:listaSelecionados){
+            System.out.println(Candidato.getNome());
+        }
+      }
 }
